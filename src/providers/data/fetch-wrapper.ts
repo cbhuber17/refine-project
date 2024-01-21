@@ -5,6 +5,7 @@ type Error = {
     statusCode: string;
 };
 
+// Similar to middleware, the custom fetch
 const customFetch = async (url: string, options: RequestInit) => {
     const accessToken = localStorage.getItem("access_token");
     const headers = options.headers as Record<string, string>;
@@ -23,6 +24,7 @@ const customFetch = async (url: string, options: RequestInit) => {
 export const fetchWrapper = async (url: string, options: RequestInit) => {
     const response = await customFetch(url, options);
 
+    // Make a copy since once it is consumed, the information is gone
     const responseClone = response.clone();
     const body = await responseClone.json();
     const error = getGraphQLErrors(body);
