@@ -1,15 +1,17 @@
 import { Button, Popover } from "antd";
-// import CustomAvatar from "../custom-avatar";
+import CustomAvatar from "../custom-avatar";
 
-// import type { User } from "@/graphql/schema.types";
+import type { User } from "@/graphql/schema.types";
 import { SettingOutlined } from "@ant-design/icons";
+import { useGetIdentity } from "@refinedev/core";
 import { useState } from "react";
-// import { Text } from "../text";
-// import { AccountSettings } from "./account-settings";
+
+import { Text } from "../text";
+import { AccountSettings } from "./account-settings";
 
 const CurrentUser = () => {
     const [isOpen, setIsOpen] = useState(false);
-    // const { data: user } = useGetIdentity<User>();
+    const { data: user } = useGetIdentity<User>();
 
     const content = (
         <div
@@ -18,9 +20,9 @@ const CurrentUser = () => {
                 flexDirection: "column",
             }}
         >
-            {/* <Text strong style={{ padding: "12px 20px" }}>
+            <Text strong style={{ padding: "12px 20px" }}>
                 {user?.name}
-            </Text> */}
+            </Text>
             <div
                 style={{
                     borderTop: "1px solid #d9d9d9",
@@ -52,20 +54,20 @@ const CurrentUser = () => {
                 overlayStyle={{ zIndex: 9999 }}
                 content={content}
             >
-                {/* <CustomAvatar
+                <CustomAvatar
                     name={user?.name}
                     src={user?.avatarUrl}
                     size="default"
                     style={{ cursor: "pointer" }}
-                /> */}
+                />
             </Popover>
-            {/* {user && (
+            {user && (
                 <AccountSettings
                     opened={isOpen}
                     setOpened={setIsOpen}
                     userId={user.id}
                 />
-            )} */}
+            )}
         </>
     );
 };
