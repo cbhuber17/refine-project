@@ -24,6 +24,7 @@ const DealsChart = () => {
         },
     });
 
+    // memoize the data so it is not recalculated when rerendering
     const dealData = useMemo(() => {
         return mapDealsData(data?.data);
     }, [data?.data]);
