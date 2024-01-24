@@ -17,6 +17,9 @@ import { resources } from "./config/resources";
 import { CompanyList, ForgotPassword, Home, Login, Register } from "./pages";
 import Create from "./pages/company/create";
 import EditPage from "./pages/company/edit";
+import TasksCreatePage from "./pages/tasks/create";
+import TasksEditPage from "./pages/tasks/edit";
+import List from "./pages/tasks/list";
 import { authProvider, dataProvider, liveProvider } from "./providers";
 
 function App() {
@@ -62,6 +65,14 @@ function App() {
                     <Route index element={<CompanyList />} />
                     <Route path="new" element={<Create />} />
                     <Route path="edit/:id" element={<EditPage />} />
+                  </Route>
+                  <Route path="/tasks" element={
+                    <List>
+                      <Outlet />
+                    </List>
+                  }>
+                    <Route path="new" element={<TasksCreatePage />} />
+                    <Route path="edit/:id" element={<TasksEditPage />} />
                   </Route>
                 </Route>
               </Routes>
