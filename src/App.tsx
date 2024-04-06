@@ -1,4 +1,4 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { Authenticated, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
@@ -25,7 +25,6 @@ import { authProvider, dataProvider, liveProvider } from "./providers";
 function App() {
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <AntdApp>
           <DevtoolsProvider>
@@ -61,16 +60,19 @@ function App() {
                   }
                 >
                   <Route index element={<Home />} />
-                  <Route path="/companies" >
+                  <Route path="/companies">
                     <Route index element={<CompanyList />} />
                     <Route path="new" element={<Create />} />
                     <Route path="edit/:id" element={<EditPage />} />
                   </Route>
-                  <Route path="/tasks" element={
-                    <List>
-                      <Outlet />
-                    </List>
-                  }>
+                  <Route
+                    path="/tasks"
+                    element={
+                      <List>
+                        <Outlet />
+                      </List>
+                    }
+                  >
                     <Route path="new" element={<TasksCreatePage />} />
                     <Route path="edit/:id" element={<TasksEditPage />} />
                   </Route>
